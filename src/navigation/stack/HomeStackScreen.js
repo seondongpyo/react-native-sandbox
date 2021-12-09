@@ -5,7 +5,7 @@ const HomeStackScreen = ({ navigation }) => {
   return (
     <View style={styles.view}>
       <Image
-        source={require('../assets/images/sandbox.png')}
+        source={require('../../assets/images/sandbox.png')}
         style={styles.image}
       />
       <Text>This is sandbox!{'\n'}</Text>
