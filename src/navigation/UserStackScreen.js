@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View, Button, StyleSheet} from 'react-native';
+import { Text, View, Button, StyleSheet } from 'react-native';
 
-const UserStackScreen = ({navigation}) => {
+const UserStackScreen = ({ navigation }) => {
   return (
     <View style={styles.view}>
       <Text>User Screen {'\n'}</Text>

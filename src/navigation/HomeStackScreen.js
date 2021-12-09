@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, View, Button, Image, StyleSheet} from 'react-native';
+import { Text, View, Button, Image, StyleSheet } from 'react-native';
 
-const HomeStackScreen = ({navigation}) => {
+const HomeStackScreen = ({ navigation }) => {
   return (
     <View style={styles.view}>
       <Image
