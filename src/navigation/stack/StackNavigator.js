@@ -10,7 +10,6 @@ const StackNavigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerTitleAlign: 'center',
-        headerShown: false,
       }}>
       <Stack.Screen name="Home" component={HomeStackScreen} />
       <Stack.Screen name="User" component={UserStackScreen} />
