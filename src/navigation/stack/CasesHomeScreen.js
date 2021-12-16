@@ -6,38 +6,54 @@ import {
   StyleSheet,
   ScrollView,
   Pressable,
-  Modal,
+  Button,
 } from 'react-native';
 
 const CasesHomeScreen = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [cases, setCases] = useState([]);
 
+  const fetchData = async () => {
+    setLoading(true);
+    const response = await axios.get(`http://192.168.100.4:9090/cases`);
+    setCases(response.data);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const response = await axios.get(`http://192.168.100.4:9090/cases`);
-      setCases(response.data);
-      setLoading(false);
-    };
     fetchData();
   }, []);
+
+  const Separator = () => <View style={styles.separator} />;
 
   return (
     <>
       {loading ? null : (
         <View style={styles.container}>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+              사건 수 : {cases.length} {'\n'}
+            </Text>
+            <Button title="조회" onPress={() => fetchData()} />
+          </View>
+
+          <Separator />
+
           <ScrollView>
             {cases.map(singleCase => (
               <Pressable
                 key={singleCase.caseManagementNumber}
-                style={[styles.button, styles.buttonOpen]}
+                style={styles.button}
                 onPress={() =>
                   navigation.navigate('Detail', { singleCase: singleCase })
                 }>
-                <Text style={styles.textStyle}>
-                  {singleCase.borrowerName} {singleCase.bankBranchName}
-                </Text>
+                <Text style={styles.text}>{singleCase.borrowerName}</Text>
               </Pressable>
             ))}
           </ScrollView>
@@ -53,27 +69,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-  },
-  buttonOpen: {
     backgroundColor: '#F194FF',
   },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
+  text: {
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
 

@@ -29,7 +29,7 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerTitleAlign: 'center',
+        headerShown: false,
         tabBarIcon: ({ focused }) => TabBarIcon(focused, route.name),
         tabBarLabelPosition: 'below-icon',
       })}>

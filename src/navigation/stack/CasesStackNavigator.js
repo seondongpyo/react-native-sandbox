@@ -11,7 +11,7 @@ const CasesStackNavigator = () => {
       screenOptions={{
         headerTitleAlign: 'center',
       }}>
-      <Stack.Screen name="Home" component={CasesHomeScreen} />
+      <Stack.Screen name="List" component={CasesHomeScreen} />
       <Stack.Screen name="Detail" component={CasesDetailScreen} />
     </Stack.Navigator>
   );
