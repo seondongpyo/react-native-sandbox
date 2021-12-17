@@ -35,8 +35,8 @@ const TabNavigator = () => {
       })}>
       <Tab.Screen name="Home" component={HomeTabScreen} />
       <Tab.Screen name="Cases" component={CasesStackNavigator} />
-      <Tab.Screen name="Todo" component={TodoTabScreen} />
-      <Tab.Screen name="Sandbox" component={StackNavigator} />
+      {/* <Tab.Screen name="Todo" component={TodoTabScreen} /> */}
+      {/* <Tab.Screen name="Sandbox" component={StackNavigator} /> */}
     </Tab.Navigator>
   );
 };
